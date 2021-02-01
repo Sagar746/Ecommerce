@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+	<h1 class="text-center">Welcome to our website</h1>
+	<hr>
+	<div class="row mt-3">
+		{% for p in product_list %}
+		<div class="col-md-4">
+			<p>{{p.title}}</p>
+			<img src="{{p.image.url}}" class="img-fluid" width="200"><br>
+			<p>Price: <strike>{{p.marked_price}}</strike>
+			Rs. {{p.selling_price}} </p>
+			<a href="{% url 'ecomapp:addtocart' p.id %}" class="btn btn-primary">Add To Cart</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

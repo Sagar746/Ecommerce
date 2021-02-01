@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<a href="{% url 'ecomapp:home' %}">Home</a> |
+<a href="{% url 'ecomapp:about' %}">About us</a> |
+<a href="{% url 'ecomapp:contact' %}">contact us</a> |
+<a href="{% url 'ecomapp:allproducts' %}">all products</a> |
+<a href="{% url 'ecomapp:mycart' %}">View Cart</a> |
+{% if request.user.customer %}
+<a href="{% url 'ecomapp:customerlogout' %}">Logout</a>
+Welcome {{request.user.username}}
+<a href="{% url 'ecomapp:customerprofile' %}">My Profile</a>
+{% else %}
+<a href="{% url 'ecomapp:customerregistration' %}">Register</a>
+<a href="{% url 'ecomapp:customerlogin' %}">Login</a>
+{% endif %}
+
+</div>
+
+
+{% block content %}
+
+
+
+{% endblock %}
+
+
+</body>
+</html>
